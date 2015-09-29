@@ -1,0 +1,100 @@
+Day-1 
+June 17, 2015 (Wednesday) 
+1) Introduction to Angularjs 
+  a) AngularJs 
+  b) MVW 
+2) Controllers, Scopes & Views 
+  a) Introduction 
+  b) Templates 
+  c) Expressions 
+  d) Modules 
+  e) Controllers 
+  f) Dependency Injection 
+  g) Summary 
+
+
+
+Day- 2 
+June 18, 2015 (Thursday) 
+1) Services 
+  a) Factory 
+  b) Service 
+  c) Provider 
+  d) Value  - 
+  e) Constant  - 
+  f) Decorator 
+  g) BuiltIn Services 
+         ga) $http 
+         gb) $resource 
+         gc) $q 
+  h) Custom Services
+
+
+Day- 3
+June 24, 2015 (Wednesday)
+1) Filters 
+  a) Built in Filters 
+  b) Custom Filters 
+2) Form Validation 
+  a) overview 
+  b) ngModel and form directives 
+  c) Built in validations 
+  d) Prensting the Form's state to the user 
+  e) Binding to form and control state 
+  f) Presenting validation errors 
+  g) Using css classes 
+  h) custom validation 
+  i) custom form controls 
+
+Day- 4
+June 25, 2015 (Thursday)
+1) Directives 
+  a) Introduction 
+  b) $compile service
+  c) Creating Custom Directives 
+         ca) Restricting Directive Usage 
+         cb) Template Expanding Directives 
+         cc) Isolated scope 
+         cd) Transclusion 
+         ce) DOM Interactions 
+         cf) Collaborating with other Directives
+
+
+
+Day - 5
+July 01, 2015 (Wednesday)
+1) Routing 
+    a) Introduction 
+         aa) Classic way 
+         ab) HTML5 History API 
+    b) $location Service 
+   c) ngRoute Module 
+   d) Route Registration with $routeProvider 
+   e) ngView Directive 
+    f) $routeParams Service 
+   g) Resolving Dependencies 
+   h) ui-router 
+
+
+Day- 6
+July 02, 2015 (Thursday)
+1) Animations 
+    a) CSS Transitions and animations 
+    b) ngAnimate Module 
+    c) Animation in built in directives 
+    d) Css Defined animations 
+    e) $animate Service 
+
+===============================================================
+
+http://www.iprogrammerindia.in/crud-operations-angular-js/
+
+SLIM  - http://www.slimframework.com/
+
+
+Database - MySQL
+----------------
+
+
+
+

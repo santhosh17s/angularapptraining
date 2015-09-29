@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="dirApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom Directive</title>
+</head>
+<body>
+    
+    
+    <div ng-controller="dirAppCtrl">
+       <input type="text" ng-model="color" placeholder="Enter color">
+        <hello-world color-attr="{{color}}">from hello world</hello-world>
+    </div>
+    
+    
+     <script src="js/angular.js"></script>
+     <script>
+         
+         angular.module('dirApp',[])
+            .directive('helloWorld', function(){
+                return {
+                    scope: {
+                        color: '@colorAttr'
+                    },
+                    restrict: 'EA',
+                    replace: true,
+                    template: '<p style="background-color:{{color}}">Hello World</p>',
+                    link: function(scope, elem, atts){
+                        elem.bind('click', function(){
+                           elem.css('background', 'white');
+                           scope.$apply(function(){
+                               scope.color = 'white';
+                           });
+                           // alert(atts.colors);
+                        });
+                        elem.bind('mouseover', function(){
+                            elem.css('cursor', 'pointer');
+                        })
+                    }
+                };
+            })
+            .controller('dirAppCtrl', function($scope){
+                $scope.message = "Show Message";
+         });
+    </script>
+</body>
+</html>

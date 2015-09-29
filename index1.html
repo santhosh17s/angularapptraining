@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>angular</title>
+    <script src="js/angular.js"></script> 
+</head>
+<body>
+    <div ng-controller="myAppCtrl">
+      <input type="text" ng-model="userName">
+      <p> {{ userName }}</p>
+    </div>
+
+    <script>
+         angular.module('myApp',[])
+            .controller('myAppCtrl', function($scope){
+                $scope.userName = "Please Enter user Name"; 
+            });
+    </script>  
+</body>
+</html>

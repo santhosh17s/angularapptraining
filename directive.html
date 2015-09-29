@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Directive</title>
+    <script src="js/angular.js"></script>
+      <script src="js/angular-route.js"></script>  
+</head>
+<body>
+   
+   <h1>Directives</h1>
+   <div data-ng-app="">
+      <div ng-controller="appCtrl">
+          <p ng-bind="firstName"></p>
+          
+          <div ng-view></div>
+          
+          
+       </div>
+       <div ng-controller="dirAppCtrl2">
+           <p ng-bind="name"></p>
+           <button ng-click="doSomething()">Do Something</button>
+           
+           <h3> Lists (ng-repeat)</h3>
+           <ul>
+               <li ng-repeat="emp in EmpList">
+                   {{emp.name}}
+               </li>
+           </ul>
+           
+           <form>
+               <label>Show Me <input type="checkbox" ng-model="showme"></label>
+               <div ng-show="showme">
+                   <p>This is show me action from ng-show</p>
+               </div>
+           </form>
+       </div>
+   </div>
+   
+   <!--<script src="js/appWork.js"></script>-->
+   
+    <script>
+       
+        var app = angular.module('dirApp', ['ngRoute']);
+        app.config(function($routeProvider){
+            $routeProvider.when('/',{
+                templateUrl: 'book.html'});
+        });
+        
+        app.controller('appCtrl', function($scope){
+            $scope.firstName = "Angular Controller 1";
+        });
+        
+        app.controller('dirAppCtrl2', function($scope){
+            
+            $scope.name = "From second Controller";
+            $scope.doSomething = function(){
+                alert('Alerts from button click');
+            }
+            
+            $scope.EmpList = [{
+                        name:'santhosh',
+                        EmpId: '3237',
+                        Age: 29
+                    },{
+                        name:'ashwin',
+                        EmpId: '3721',
+                        Age: 21
+                    },{
+                        name:'prakash',
+                        EmpId: '3721',
+                        Age: 25
+                    },{
+                        name:'Z',
+                        EmpId: '3721',
+                        Age: 22
+                    }];
+        });
+        
+    </script>     
+</body>
+</html>

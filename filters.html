@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="filterApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Filters | ng</title>
+</head>
+<body>
+  
+  <h1>Filters  | Angular </h1>
+  <div ng-controller="filterAppCtrl">
+      
+      <h4>Currency</h4>
+     <input type="number" ng-model="amount"> <br>
+          default currency symbol ($): <span id="currency-default">{{amount | currency }}</span><br>
+          custom currency identifier (Rs): <span id="currency-custom">{{amount | currency:"Rs"}}</span><br>
+          No fractions (0): <span id="currency-no-fractions">{{amount | currency:"Rs":0}}</span>
+  
+     <hr>
+      <h4>Number</h4>
+      Enter number: <input ng-model='val'><br>
+      Default formatting: <span id='number-default'>{{val | number}}</span><br>
+      No fractions: <span>{{val | number:1}}</span><br>
+  
+  <hr>
+  
+  <h4>Date (Today)</h4>
+      Date: <span>{{ datem | date:'yyyy-MM-dd' }}</span> <br>
+      Date and Time: <span>{{ datem | date:'yyyy-MM-dd HH:mm:ss Z' }}</span>
+  <hr>
+  <h4>lowercase / uppercase (this IS change LATTERs)</h4>
+      lowercase : <span>{{ case | lowercase}} </span> <br>
+      uppercase: <span>{{ case | uppercase }}</span>
+  <hr>
+  <h4>limitTo</h4>
+      Limit {{numbers}} to: <input type="number" step="1" ng-model="numLimit">
+      <p>Output numbers: {{ numbers | limitTo:numLimit }}</p>
+  <hr>
+  <h4>orderBy</h4>
+      <pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
+      <br>
+      [ <a href="" ng-click="predicate=''">unsorted</a> ]
+      <table class="friend">
+        <tr>
+          <th><a href="" ng-click="predicate = 'name'; reverse=false">Name</a>
+              (<a href="" ng-click="predicate = '-name'; reverse=false">^</a>)</th>
+          <th><a href="" ng-click="predicate = 'phone'; reverse=!reverse">Phone Number</a></th>
+          <th><a href="" ng-click="predicate = 'age'; reverse=!reverse">Age</a></th>
+        </tr>
+        <tr ng-repeat="friend in friends | orderBy:predicate:reverse">
+          <td>{{friend.name}}</td>
+          <td>{{friend.phone}}</td>
+          <td>{{friend.age}}</td>
+        </tr>
+      </table>
+  <hr>
+  
+  </div>
+   
+   
+   <script src="js/angular.js"></script>
+   <script>
+       angular.module('filterApp', [])
+            .controller('filterAppCtrl', function($scope){
+                $scope.amount = 234.567;
+                $scope.val = 12346.1234;
+                $scope.datem = new Date();
+                $scope.case = 'this IS change LATTERs';
+                $scope.numbers = [1,2,3,4,5,6,7,8,9]
+                $scope.numLimit = 3;
+           
+            $scope.friends =
+                  [{name:'John', phone:'555-1212', age:10},
+                   {name:'Mary', phone:'555-9876', age:19},
+                   {name:'Mike', phone:'555-4321', age:21},
+                   {name:'Adam', phone:'555-5678', age:35},
+                   {name:'Julie', phone:'555-8765', age:29}];
+           
+       });
+       
+       //angular.bootstrap(document.getElementById("App2"),['filterApp']);
+    </script>
+    
+</body>
+</html>

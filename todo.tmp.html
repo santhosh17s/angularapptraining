@@ -1,0 +1,37 @@
+<md-content ng-controller="toDoCtrl as tdc">
+    
+    <md-toolbar layout="row" class="site-content-toolbar md-padding md-whiteframe-z1">
+        <h3> To Do List</h3>
+    </md-toolbar>               
+        
+    <div layout="row" layout-align="center center" >
+         <div flex-gt-sm="70" flex-gt-md="80"> 
+            <md-card>
+                <md-card-content>
+                    <div layout="row" layout-align="center center " class="md-padding" >
+                        <md-input-container flex="90" >
+                          <label>Give New ToDo Task</label>
+                          <input ng-model="tdc.todoText" required>
+                        </md-input-container>
+
+                        <md-input-container  class="md-default-theme" flex="10">
+                                 <button class="md-fab md-button md-default-theme" aria-label="Add todo items" ng-click="addItem()">
+                                     <md-icon md-svg-src="img/icons/add.svg" class="s24" aria-label="Add"></md-icon>                         
+                                  </button>
+                         </md-input-container>
+                    </div>
+                     <md-list>
+                         <md-list-item class="item" ng-repeat="item in tdc.toDoItems">
+                                <md-checkbox ng-model="item.done"></md-checkbox>
+                                <p>{{item.text}}</p>
+                                <md-icon ng-show="item.done" md-svg-src="img/icons/delete.svg" class="s24" aria-label="delte" 
+                                         ng-click="deleteItem($index, $event)"></md-icon>                         
+                        </md-list-item>
+                    </md-list>
+               
+                </md-card-content>    
+            </md-card>
+             
+        </div>
+    </div>
+</md-content>

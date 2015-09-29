@@ -1,0 +1,52 @@
+<md-content ng-controller="formCtrl as el">
+    <md-toolbar class="site-content-toolbar md-padding md-whiteframe-z1">
+        <h3>Employee Details</h3>
+    </md-toolbar>        
+
+    <div layout="row" layout-align="center center" >
+         <div flex="70" class="md-padding"> 
+           <md-card>
+               <md-card-content>
+                    <md-button class="md-fab md-button md-default-theme md-fab-top-right" aria-label="Add" >
+                        <a ng-href="#newEmp"><md-icon md-svg-src="img/icons/add.svg"></md-icon></a>
+                     </md-button>
+                     
+                    <!-- <md-progress-circular md-mode="indeterminate"></md-progress-circular>-->
+
+                     <div class="table-responsive-vertical">
+                        <md-input-container flex>
+                            <label>Search</label><input ng-model="searchTxt" >
+                        </md-input-container>
+                          <!-- Table starts here -->
+                          <table id="table" class="table table-hover table-mc-light-blue table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>ID</th>
+                                  <th>Name</th>
+                                  <th>DOB</th>
+                                  <th>Edit</th>
+                                  <th>Delete</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr ng-repeat="emp in el.empData | filter:searchTxt">
+                                  <td data-title="ID">{{emp.id}}</td>
+                                  <td data-title="Name">{{emp.name}}</td>
+                                  <td data-title="DOB">{{emp.dob | date:'dd-MM-yyyy'}}</td>
+                                  <td data-title="Link">
+                                     <a ng-href="#/updateEmp/{{ emp.id }}">
+                                        <md-icon md-svg-src="img/icons/ic_mode_edit_black_24px.svg" class="s24 emp-icon" aria-label="edit" ></md-icon>
+                                      </a></td>
+                                  <td data-title="detele">
+                                    <md-icon md-svg-src="img/icons/delete.svg" class="s24 emp-icon" aria-label="delte" 
+                                     ng-click="deleteEmpItem(emp.id)"></md-icon> </td>
+                                </tr>
+                              </tbody>
+                         </table>
+                     </div> 
+             </md-card-content>
+           </md-card>
+             
+        </div>
+    </div>
+</md-content>

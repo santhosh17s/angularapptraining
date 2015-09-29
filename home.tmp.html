@@ -1,0 +1,40 @@
+<md-toolbar layout-padding class="site-content-toolbar md-whiteframe-z1">
+    <h2 class="md-headline" >Welcome to Angular Training</h2>
+</md-toolbar>
+<md-content>
+    <ul class="buckets" layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+      <li flex="25" flex-md="50" flex-sm="50" >
+        <a md-ink-ripple href="#/" class="md-primary md-raised md-button md-default-theme" >
+            <span class="ng-binding ng-scope">Getting Started</span></a>
+      </li>
+      <li flex="25" flex-md="50" flex-sm="50">
+        <a  md-ink-ripple href="#todo" class="md-primary md-raised md-button md-default-theme" >
+            <span class="ng-binding ng-scope"> To Do App </span></a>
+      </li>
+        <li flex="25" flex-md="50" flex-sm="50">
+        <a  md-ink-ripple href="#form" class="md-primary md-raised md-button md-default-theme" >
+            <span class="ng-binding ng-scope"> Employee CRUD </span></a>
+      </li>
+        <li flex="25" flex-md="50" flex-sm="50">
+        <a  md-ink-ripple href="#about" class="md-primary md-raised md-button md-default-theme" >
+            <span class="ng-binding ng-scope"> About Training </span></a>
+      </li>
+    </ul>
+</md-content>
+    
+    
+
+    <md-content>
+     <ul>
+          <li ng-repeat= "item in ac.menu" >
+              {{item}}
+          </li>
+      </ul>
+       <md-card>
+            <test-direct> <h3>this is inside from custom directive</h3> </test-direct>
+        </md-card>
+    </md-content>
+
+   <santhosh>this is from own custom element</santhosh>
+    
+    

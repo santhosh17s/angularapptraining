@@ -1,0 +1,33 @@
+<div layout>
+      <md-toolbar class="site-content-toolbar md-padding md-whiteframe-z1">
+          <h3> Angular Factory & Service</h3>
+        </md-toolbar>     
+
+</div>
+ <md-content class="md-padding">
+     
+        <p>In AngularJS, services are reusable singleton objects that are used to organize and share code across your app.</p>
+     
+        <h4>Factory</h4>
+        <p>A factory is a simple function which allows you to add some logic before creating the object. It returns the created object.
+            <i> <code>app.factory('serviceName', function(){ return serviceObj});</code></i></p>
+        <p>From Factory: {{factoryName}}</p>
+        <br>
+        <h4>Service</h4>
+        <p>A service is a constructor function which creates the object using new keyword. You can add properties and functions to a service object by using this keyword. Unlike factory, it doesn’t return anything.
+            <i><code>app.service('ServiceName', function(){ });</code></i></p>
+        <p>From Service: {{serviceName}}</p>
+        <br>
+        <h4>Provider</h4>
+        <p>A provider is used to create a configurable service object. It returns value by using $get() function.
+            <i><code>//creating a service
+app.provider('serviceName',function(){});
+ 
+//configuring the service
+app.config(function(serviceNameProvider){});</code></i>    
+     </p>
+        <p>From Provider: {{providerName}}</p>
+     
+ 
+        
+    </md-content>

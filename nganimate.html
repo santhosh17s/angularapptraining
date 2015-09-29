@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ng-Animate</title>
+
+    <style>
+        .item {
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+
+        .item {
+          cursor: pointer;
+          display: block;
+          margin: 0;
+          padding: 0;
+          width: 150px;
+          height: 30px;
+          overflow: hidden;
+        }
+
+        .item:hover {
+          color: blue;
+        }
+
+        .item-contents {
+          display: block;
+          width: 200px;
+          height: 30px;
+          line-height: 30px;
+          padding: 0 10px;
+        }
+
+        /* Contents are cloned and position transitioned between the lists */
+        .item-contents.ng-anchor-out {
+          /* No "out" transition: the item moving accross the page is exactly how it
+             appears in the source location */
+        }
+        .item-contents.ng-anchor-in {
+          transition: 0.2s linear all;
+        }
+        
+        
+        /* New element set to 0 height after addition to DOM... */
+        
+        .item.ng-enter {
+            transition: 0.1s linear all;
+            height: 0;
+        }
+        /* ...then transitioned to 30px */
+        
+        .item.ng-enter.ng-enter-active {
+            height: 30px;
+        }
+        /* Existing element set to 30px height just before removal... */
+        
+        .item.ng-leave {
+            transition: 0.1s linear all;
+            height: 30px;
+        }
+        /* ... then transitioned to 0 */
+        
+        .item.ng-leave.ng-leave-active {
+            height: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div ng-app="myApp" ng-controller="myAppCtrl">
+
+        <ul class="list">
+            <li class="item" ng-repeat="item in listA" ng-click="moveToListB(item)">
+               <span class="item-contents" ng-animate-ref="{{ item.id }}">Item: {{ item.id }}</span>
+            </li>
+        </ul>
+        <ul class="list">
+            <li class="item" ng-repeat="item in listB" ng-click="moveToListA(item)">
+               <span class="item-contents" ng-animate-ref="{{ item.id }}">Item: {{ item.id }}</span>
+            </li>
+        </ul>
+        
+        <div ng-controller="navCtrl">
+           <span>{{user.name}}</span>
+           <div ng-controller="loginCtrl">
+                <span>{{user.name}}</span>
+                <input ng-model="user.name"></input>
+           </div>
+        </div>
+        
+    </div>
+
+
+    <script src="js/angular.js"></script>
+    <script src="js/angular-animate.js"></script>
+    <script>
+        angular.module('myApp', ['ngAnimate'])
+            .controller("myAppCtrl", myAppCtrl)
+            .controller("navCtrl", function($scope){
+                $scope.user = {}})
+            .controller("loginCtrl", function(){});
+
+
+        function myAppCtrl($scope) {
+            
+            $scope.listA = [{id : 'ABC'},
+                           {id : 'DEF'},
+                           {id : 'GHI'},
+                           {id : 'JKL'},
+                           {id : 'MNO'},
+                           {id : 'OPQ'}];
+            
+            $scope.listB = [{id :'35'},
+                           {id : '89'},
+                           {id : '65'},
+                           {id : '98'},
+                           {id : '36'},
+                           {id : '12'}];
+
+            $scope.moveToListB = function(item) {
+              $scope.listB.push(item);
+              $scope.listA.splice($scope.listA.indexOf(item), 1);
+            };
+            $scope.moveToListA = function(item) {
+              $scope.listA.push(item);
+              $scope.listB.splice($scope.listB.indexOf(item), 1);
+            };
+                
+        }
+        
+        
+      /*  app.service('helloWorldService', function(){
+            this.hello = function(){
+                return 'Hello World';
+            }
+        });
+        
+        app.factory('helloWorldFactory', function(){
+            return {
+                hello: function(){
+                    return 'Hello World';
+                }
+            };
+        });*/
+        
+        
+    </script>
+</body>
+
+</html>

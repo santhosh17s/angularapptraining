@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Route | ng</title>
+</head>
+<body>
+    
+    <div ng-app="routeApp">
+        <div ng-controller="routeAppCtrl">
+            <a href="route.html#/getEmp">Get Employee</a>
+            <a href="route.html#/Book/nodejs">NODEJS</a> |
+            <a href="route.html#/Book/mongodb/ch/4?dbkey=dbvalue">MONGODB Ch4</a> 
+            
+
+             <div ng-view></div>
+       
+            <hr />
+
+          <pre>$location.path() = {{ $location.path()}}</pre>
+          <pre>$route.current.templateUrl = {{ $route.current.templateUrl}}</pre>
+          <pre>$route.current.params = {{ $route.current.params}}</pre>
+          <pre>$route.current.scope.name = {{ $route.current.scope.name}}</pre>
+          <pre>$routeParams = {{ $routeParams}}</pre>
+       
+       
+        </div>
+    </div>
+    
+    
+    
+     <script src="js/angular.js"></script>
+     <script src="js/angular-route.js"></script>  
+     <script>
+         
+          angular.module('routeApp', ['ngRoute'])
+            .config(function($routeProvider){
+                    $routeProvider
+                        .when('/',{})
+                        .when('/Book/:bookId', 
+                                {  
+                                    templateUrl: 'book.html',
+                                    controller: 'bookCtrl'
+                                })
+                        .when('/Book/:mongodb/ch/:chapterId',{
+                                templateUrl: 'book.html',
+                                controller: 'bookCtrl'
+                            })
+                        .when('/getEmp',{
+                                templateUrl: 'book.html',
+                                controller: 'bookCtrl'
+                            });
+                })
+            .controller('routeAppCtrl', function($scope,  $route, $routeParams, $location){
+                     $scope.$route = $route;
+                     $scope.$location = $location;
+                     $scope.$routeParams = $routeParams;
+                })
+            .controller('bookCtrl', function($scope, $routeParams, $http ){
+                    $scope.name = "BookController";
+                    $scope.params = $routeParams;
+              
+                    var url = "http://localhost:90/angularapptraining/api/formprocess.php/showEmp";
+                    $http.get(url)
+                        .success(function(data, status, headers, config){
+                            $scope.empData = data;
+                            })
+                        .error(function(data, status, headers, config){
+                            
+                        });
+              
+              
+                });
+         
+    </script>
+</body>
+</html>
